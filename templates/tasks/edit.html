@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit task
+{% endblock %}
+
+{% block main %}
+    <h1>Edit task</h1>
+
+    <form method="POST" action="/Tasks/{{ task.id }}/Edit">
+        <div class="form-group row">
+          <label for="title" class="col-4 col-form-label">Status</label> 
+          <div class="col-8">
+            <select id="status" name="status" class="form-control" required="required">
+              <option value="Pending" {% if task.status == 'Pending' %}selected="selected"{% endif %}>Pending</option>
+              <option value="Done" {% if task.status == 'Done' %}selected="selected"{% endif %}>Done</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="title" class="col-4 col-form-label">Title</label> 
+          <div class="col-8">
+            <input id="title" name="title" type="text" class="form-control" required="required" value="{{ task.title }}">
+          </div>
+        </div>        
+        <div class="form-group row">
+          <label for="description" class="col-4 col-form-label">Description</label> 
+          <div class="col-8">
+            <textarea id="description" name="description" cols="40" rows="5" class="form-control">{{ task.description }}</textarea>
+          </div>
+        </div> 
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+
+{% endblock %}

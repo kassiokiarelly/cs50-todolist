@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Detail
+{% endblock %}
+
+{% block main %}
+
+{% for task in tasks %}
+    <h1>Tasks: #{{ task.id }}</h1>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th scope="col">Title</th>
+            <td>{{ task.title }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Description</th>
+            <td>{{ task.description }}</td>
+        </tr>        
+        <tr>
+            <th scope="col">Status</th>
+            <td><span class="badge bg-light text-dark">{{ task.status }}</span></td>
+        </tr>
+        <tr>
+            <th scope="col">Created At</th>
+            <td>{{ task.created_at }}</td>
+        </tr>
+    </table>
+    <a href="/Tasks/{{ task.id }}/Edit" class="btn btn-primary">Edit task</a>
+{% endfor %}
+
+{% endblock %}
